@@ -29,7 +29,7 @@
     transform: translate(-50% , -50%);
 }
 
-
+/*INIZIO SIDEBAR*/
 
 aside{
     height: 100%;
@@ -79,10 +79,11 @@ aside{
     width: 100%;
     height: 90px;
     background-color: white;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid #EBEBEB;
     display: flex;
     align-items: center;
     padding-left: 20px;
+    cursor: pointer;
 }
 
 .contact-info{
@@ -106,6 +107,10 @@ aside{
     object-fit: cover;
     border-radius: 50%;
     margin: 5px;
+}
+
+.contact.active{
+    background-color: #EBEBEB;
 }
 
 .tools{
@@ -140,6 +145,7 @@ aside{
     padding-left: 20px;
 }
 
+/*INIZIO PARTE DESTRA*/
 
 .right-side{
     height: 100%;
@@ -165,6 +171,14 @@ aside{
     border-left: 1px solid lightgray;
 }
 
+
+main{
+    height: calc(100% - 140px);
+    background-image: url('http://img3.todoiphone.net/wp-content/uploads/2014/03/WhatsApp-Wallpaper-39.jpg');
+    background-size: cover;
+    overflow-y: auto;
+}
+
 .right-side .bottom-bar{
     width: 100%;
     height: 60px;
@@ -175,13 +189,6 @@ aside{
     justify-content: space-around;
     align-items: center;
     color: #919191;
-}
-
-main{
-    height: calc(100% - 140px);
-    background-image: url('http://img3.todoiphone.net/wp-content/uploads/2014/03/WhatsApp-Wallpaper-39.jpg');
-    background-size: cover;
-    overflow-y: auto;
 }
 
 .message{
