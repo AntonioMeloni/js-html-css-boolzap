@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .bk-container{
@@ -30,7 +31,6 @@
 
 
 
-
 aside{
     height: 100%;
     width: 30%;
@@ -38,41 +38,65 @@ aside{
     background-color: white;
 }
 
-aside .side-topbar{
+.side-topbar{
     width: 100%;
     height: 80px;
     background-color: #EDEDED;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-right: 1px solid lightgray;
 }
 
-aside .disclamer{
+.disclamer{
     width: 100%;
     height: 90px;
     background-color: #9DE1FE;
+    display: flex;
+    align-items: center;
+    padding: 20px;
 }
 
-aside .searchbar{
+.searchbar{
     width: 100%;
     height: 50px;
     background-color: white;
 }
-
-aside .contact{
+.contacts{
+    height: calc(100% - 220px);
+    overflow-y: auto;
+}
+.contact{
     width: 100%;
     height: 90px;
     background-color: white;
     border-bottom: 1px solid gray;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
 }
 
+.contact-info{
+    padding-left: 30px;
+}
+
+.contact-info span{
+    font-size: 18px;
+}
+
+.contact-info p{
+    color: #A1A1A1;
+    padding-top: 5px;
+}
 .avatar{
-    padding: 5px;
+    display: flex;
+    align-items: center;
 }
 .avatar img{
-    height: 70px;
+    max-height: 70px;
     object-fit: cover;
     border-radius: 50%;
+    margin: 5px;
 }
 
 .tools{
@@ -86,8 +110,25 @@ aside .contact{
     font-size: 21px;
 }
 
+.campana{
+    background-color: white;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.campana i{
+    font-size: 25px;
+    color: #9DE1FE;
+}
 
+.disclamer-text{
+    font-size: 14px;
+    padding-left: 20px;
+}
 
 
 main{
@@ -101,7 +142,10 @@ main{
 main .top-bar{
     width: 100%;
     height: 80px;
-    background-color: gray;
+    background-color: #EDEDED;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 main .bottom-bar{
