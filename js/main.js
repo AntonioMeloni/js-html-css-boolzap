@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
-    var oraEsatta = mostraOra();
     function mostraOra() {
         var d = new Date();
         var hours = d.getHours();
@@ -42,12 +41,11 @@ $(document).ready(function(){
 
 $('#cerca-contatti').keyup(function(event){
     var carattereFiltro = $(this).val().toLowerCase();
-    // console.log(carattereFiltro);
-    $('.contact').each(function(){ // Se nella lista contatti è presente il carattere digitato visualizzarlo
-        // console.log($(this).text());
-        if ($(this).find('.name').text().toLowerCase().includes(carattereFiltro)) { // Se il nome del list item ha al suo interno i caratteri digitati visualizzalo
+    ;
+    $('.contacts .contact').each(function(){
+        if ($(this).find('.name').text().toLowerCase().includes(carattereFiltro)) {
             $(this).show();
-        } else { // Altrimenti non visualizzarlo
+        } else {
             $(this).hide();
         }
     });
