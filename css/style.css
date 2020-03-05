@@ -228,6 +228,14 @@ main{
     padding: 10px;
 }
 
+.orario{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-size: 12px;
+    color: gray;
+}
+
 .message-received {
     max-width: 350px;
     background-color: white;
