@@ -6,10 +6,22 @@ $(document).ready(function(){
         // $('#nome-utente').text('<span class="rosso">' + nomeInput + '</span>');
         // $('#nome-utente').text(nomeInput).attr('class', 'rosso').css('background-color', 'yellow');
         // $('.lista-nomi').append('<div>' + nomeInput + '</div>');
-        var messaggio = $('.template .message').clone(); // Copia del contenuto del messaggio che è dentro al template (display none nel nostro CSS)
+        var messaggio = $('.template-send .message').clone(); // Copia del contenuto del messaggio che è dentro al template (display none nel nostro CSS)
         messaggio.children('.send').text(testoMessaggio); // Modifico il testo messaggio nel messaggio
         messaggio.find('.orario').text('05:05');
         $('.chat').append(messaggio); // Aggiungo in fondo alla lista nomi il messaggio
+    });
+    $('.invia').click(function(){
+        var autoreply = setInterval(function () {
+            var testoMessaggio = 'Ok';
+
+            var messaggio = $('.template-received .message').clone(); // Copia del contenuto del messaggio che è dentro al template (display none nel nostro CSS)
+            messaggio.children('.received').text(testoMessaggio); // Modifico il testo messaggio nel messaggio
+            messaggio.find('.orario').text('05:05');
+            $('.chat').append(messaggio); // Aggiungo in fondo alla lista nomi il messaggio
+            clearInterval(autoreply);
+        },1500);
+
     });
 
     $('#message-text').click(function () {

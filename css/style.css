@@ -5,7 +5,11 @@
     font-family: 'Ubuntu', sans-serif;
 }
 
-.template{
+.template-send{
+    display: none;
+}
+
+.template-received{
     display: none;
 }
 
