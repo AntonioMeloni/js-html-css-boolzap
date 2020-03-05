@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Boolzap</title>
         <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://kit.fontawesome.com/dfd682ad78.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="css/style.css">
     </head>
@@ -35,24 +36,24 @@
                     </div>
                 </div>
                 <div class="searchbar">
-                    <input type="text" placeholder="Cerca o inizia una nuova chat" />
+                    <input id="cerca-contatti" placeholder="Cerca o inizia una nuova chat" />
                 </div>
                 <div class="contacts">
-                    <div class="contact active">
-                        <div class="avatar">
-                            <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="">
-                        </div>
-                        <div class="contact-info">
-                            <span class="name"><strong>Francesca</strong></span>
-                            <p class="last-message">Non poteva essere altrimenti</p>
-                        </div>
-                    </div>
                     <div class="contact">
                         <div class="avatar">
                             <img src='https://avataaars.io/?avatarStyle=Circle&topType=ShortHairFrizzle&accessoriesType=Round&hairColor=Brown&facialHairType=Blank&clotheType=Hoodie&clotheColor=Red&eyeType=EyeRoll&eyebrowType=Angry&mouthType=Grimace&skinColor=Tanned'/>
                         </div>
                         <div class="contact-info">
                             <span class="name"><strong>Fabio</strong></span>
+                            <p class="last-message">Non poteva essere altrimenti</p>
+                        </div>
+                    </div>
+                    <div class="contact active">
+                        <div class="avatar">
+                            <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="">
+                        </div>
+                        <div class="contact-info">
+                            <span class="name"><strong>Francesca</strong></span>
                             <p class="last-message">Non poteva essere altrimenti</p>
                         </div>
                     </div>
@@ -157,62 +158,33 @@
                     </div>
                 </div>
                 <main>
-                    <div class="message">
-                        <div class="send">Ciao come stai?</div>
+                    <div class="chat">
+
                     </div>
-                    <div class="message">
-                        <div class="received">Tutto bene grazie, tu?</div>
-                    </div>
-                    <div class="message">
-                        <div class="send">Ciao come stai?</div>
-                    </div>
-                    <div class="message">
-                        <div class="received">Tutto bene grazie, tu?</div>
-                    </div>
-                    <div class="message">
-                        <div class="send">Ciao come stai?</div>
-                    </div>
-                    <div class="message">
-                        <div class="received">Tutto bene grazie, tu?</div>
-                    </div>
-                    <div class="message">
-                        <div class="send">Ciao come stai?</div>
-                    </div>
-                    <div class="message">
-                        <div class="received">Tutto bene grazie, tu?</div>
-                    </div>
-                    <div class="message">
-                        <div class="send">Ciao come stai?</div>
-                    </div>
-                    <div class="message">
-                        <div class="received">Tutto bene grazie, tu?</div>
-                    </div>
-                    <div class="message">
-                        <div class="send">Ciao come stai?</div>
-                    </div>
-                    <div class="message">
-                        <div class="received">Tutto bene grazie, tu?</div>
-                    </div>
-                    <div class="message">
-                        <div class="send">Ciao come stai?</div>
-                    </div>
-                    <div class="message">
-                        <div class="received">Tutto bene grazie, tu?</div>
-                    </div>
+
                 </main>
                 <div class="bottom-bar">
                     <div class="emoticon">
                         <i class="far fa-smile"></i>
                     </div>
                     <div class="input-text">
-                        <input type="text" placeholder="Scrivi un messaggio" />
+                        <input id="message-text" type="text" placeholder="Scrivi un messaggio" />
                     </div>
                     <div class="vocal">
-                        <i class="fas fa-microphone"></i>
+                        <i class="fas fa-microphone microphone"></i>
+                        <i class="fas fa-paper-plane invia"></i>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="template">
+            <div class="message clearfix">
+                <div class="send">Ciao ciao
+                    <p class="orario">00:00</p>
+                </div>
 
+            </div>
+        </div>
+        <script src="js/main.js" charset="utf-8"></script>
     </body>
 </html>

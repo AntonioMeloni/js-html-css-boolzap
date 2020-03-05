@@ -5,6 +5,10 @@
     font-family: 'Ubuntu', sans-serif;
 }
 
+.template{
+    display: none;
+}
+
 .bk-container{
     position: relative;
 }
@@ -28,7 +32,10 @@
     left: 50%;
     transform: translate(-50% , -50%);
 }
-
+ input{
+     border: none;
+     padding: 10px 0;
+ }
 /*INIZIO SIDEBAR*/
 
 aside{
@@ -84,6 +91,11 @@ aside{
     align-items: center;
     padding-left: 20px;
     cursor: pointer;
+    transition: 0.5s;
+}
+
+.contact:hover{
+    background-color: #EBEBEB;
 }
 
 .contact-info{
@@ -123,6 +135,7 @@ aside{
     padding: 20px;
     font-size: 21px;
     cursor: pointer;
+    transition: 0.5s;
 }
 
 .campana{
@@ -143,6 +156,10 @@ aside{
 .disclamer-text{
     font-size: 14px;
     padding-left: 20px;
+}
+
+.disclamer-text a{
+    color: #2C3A47;
 }
 
 /*INIZIO PARTE DESTRA*/
@@ -199,7 +216,7 @@ main{
 }
 
 .send{
-    width: 150px;
+    max-width: 350px;
     background-color: #DCF8C6;
     border-radius: 5px;
     margin: 10px;
@@ -208,17 +225,19 @@ main{
 }
 
 .received {
-    width: 150px;
+    max-width: 350px;
     background-color: white;
     border-radius: 5px;
     margin: 10px;
+    float: left;
     padding: 10px;
 }
 
 .bottom-bar i{
-padding: 20px;
-font-size: 21px;
-cursor: pointer;
+    padding: 20px;
+    font-size: 21px;
+    cursor: pointer;
+    transition: 0.5s;
 }
 
 .input-text{
@@ -228,3 +247,11 @@ cursor: pointer;
 .input-text input{
     width: 100%;
 }
+ .tools i:hover,
+ .bottom-bar i:hover{
+     color: #353b48;
+ }
+
+ .invia{
+     display: none;
+ }
