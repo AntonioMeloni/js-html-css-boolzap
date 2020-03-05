@@ -1,27 +1,32 @@
 $(document).ready(function(){
+
+    var oraEsatta = mostraOra();
+    function mostraOra() {
+        var d = new Date();
+        var hours = d.getHours();
+        var minutes = d.getMinutes();
+        var time = hours + ':' + minutes;
+        return time;
+    }
+
     $('.vocal').click(function(){
         var testoMessaggio = $('#message-text').val();
         $('#message-text').val('');
-        // $('#nome-utente').html('<span class="rosso">' + nomeInput + '</span>');
-        // $('#nome-utente').text('<span class="rosso">' + nomeInput + '</span>');
-        // $('#nome-utente').text(nomeInput).attr('class', 'rosso').css('background-color', 'yellow');
-        // $('.lista-nomi').append('<div>' + nomeInput + '</div>');
-        var messaggio = $('.template-send .message').clone(); // Copia del contenuto del messaggio che è dentro al template (display none nel nostro CSS)
-        messaggio.children('.send').text(testoMessaggio); // Modifico il testo messaggio nel messaggio
-        messaggio.find('.orario').text('05:05');
-        $('.chat').append(messaggio); // Aggiungo in fondo alla lista nomi il messaggio
+        var messaggio = $('.template-send .message').clone();
+        messaggio.find('.send').text(testoMessaggio);
+        messaggio.find('.orario').text(mostraOra());
+        $('.chat').append(messaggio);
     });
+
     $('.invia').click(function(){
         var autoreply = setInterval(function () {
             var testoMessaggio = 'Ok';
-
-            var messaggio = $('.template-received .message').clone(); // Copia del contenuto del messaggio che è dentro al template (display none nel nostro CSS)
-            messaggio.children('.received').text(testoMessaggio); // Modifico il testo messaggio nel messaggio
-            messaggio.find('.orario').text('05:05');
-            $('.chat').append(messaggio); // Aggiungo in fondo alla lista nomi il messaggio
+            var messaggio = $('.template-received .message').clone();
+            messaggio.find('.received').text(testoMessaggio);
+            messaggio.find('.orario').text(mostraOra());
+            $('.chat').append(messaggio);
             clearInterval(autoreply);
         },1500);
-
     });
 
     $('#message-text').click(function () {
