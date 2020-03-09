@@ -95,7 +95,12 @@ $(document).ready(function(){
                $(this).show();
           }
      });
+    });
 
-
-    })
+    $('.contact ').click(function() {
+    var nome = $(this).find('.name').text();
+    $('.on-chat').find('.name').text(nome);
+    var imgProfile = $(this).find('.avatar img').attr('src');
+    $('.on-chat').find('.avatar img').attr('src', imgProfile);
+});
 });
