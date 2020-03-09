@@ -39,7 +39,7 @@
                     <input id="cerca-contatti" placeholder="Cerca o inizia una nuova chat" />
                 </div>
                 <div class="contacts">
-                    <div class="contact">
+                    <div class="contact" data-utente="01">
                         <div class="avatar">
                             <img src='https://avataaars.io/?avatarStyle=Circle&topType=ShortHairFrizzle&accessoriesType=Round&hairColor=Brown&facialHairType=Blank&clotheType=Hoodie&clotheColor=Red&eyeType=EyeRoll&eyebrowType=Angry&mouthType=Grimace&skinColor=Tanned'/>
                         </div>
@@ -48,7 +48,7 @@
                             <p class="last-message">Non poteva essere altrimenti</p>
                         </div>
                     </div>
-                    <div class="contact active">
+                    <div class="contact active" data-utente="02">
                         <div class="avatar">
                             <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="">
                         </div>
@@ -57,7 +57,7 @@
                             <p class="last-message">Non poteva essere altrimenti</p>
                         </div>
                     </div>
-                    <div class="contact">
+                    <div class="contact" data-utente="03">
                         <div class="avatar">
                             <img src='https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Kurt&hairColor=BrownDark&facialHairType=MoustacheMagnum&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=Black&eyeType=Wink&eyebrowType=UnibrowNatural&mouthType=Sad&skinColor=Light'
 />
@@ -158,9 +158,9 @@
                     </div>
                 </div>
                 <main>
-                    <div class="chat">
-
-                    </div>
+                    <div class="chat-container" data-utente= "01"></div>
+                    <div class="chat-container" data-utente="02"></div>
+                    <div class="chat-container" data-utente="03"></div>
 
                 </main>
                 <div class="bottom-bar">
@@ -191,7 +191,6 @@
                     <div class="received"></div>
                     <div class="orario"></div>
                 </div>
-
             </div>
         </div>
         <script src="js/main.js" charset="utf-8"></script>
