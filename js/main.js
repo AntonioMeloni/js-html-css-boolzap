@@ -3,7 +3,14 @@ $(document).ready(function(){
     function mostraOra() {
         var d = new Date();
         var hours = d.getHours();
-        var minutes = d.getMinutes();
+        var minutes;
+
+        if (d.getMinutes()<10) {
+            minutes = '0' + d.getMinutes();
+        }else {
+            minutes = d.getMinutes();
+        }
+
         var time = hours + ':' + minutes;
         return time;
     }
@@ -17,17 +24,6 @@ $(document).ready(function(){
             sendMessage();
         }
     })
-
-    // $('.invia').click(function(){
-    //     var autoreply = setInterval(function () {
-    //         var testoMessaggio = 'Ok';
-    //         var messaggio = $('.template-received .message').clone();
-    //         messaggio.find('.received').text(testoMessaggio);
-    //         messaggio.find('.orario').text(mostraOra());
-    //         $('.chat').append(messaggio);
-    //         clearInterval(autoreply);
-    //     },1500);
-    // });
 
     $('#message-text').click(function () {
         $('.microphone').hide();
@@ -77,30 +73,41 @@ $(document).ready(function(){
     }
 
     function scroll() {
-          var pixelScroll = $('.chat-container').height();
+          var pixelScroll = $('.chat-container .chat-active').height();
           $('.chat-container.chat-active').scrollTop(pixelScroll);
      }
 
      $('.contact').click(function() {
-     var nome = $(this).find('.name').text();
-     $('.contact').removeClass('active');
-      $(this).addClass('active');
+         var nome = $(this).find('.name').text();
+         $('.contact').removeClass('active');
+         $(this).addClass('active');
 
-     var utente = $(this).data('utente');
-     $('.chat-container').each(function(){
-          if(utente == $(this).data('utente')) {
-              $('.chat-container').removeClass('chat-active');
-               $(this).addClass('chat-active');
-               $('.chat-container').hide();
-               $(this).show();
-          }
-     });
+         var utente = $(this).data('utente');
+         $('.chat-container').each(function(){
+              if(utente == $(this).data('utente')) {
+                  $('.chat-container').removeClass('chat-active');
+                  $(this).addClass('chat-active');
+                  $('.chat-container').hide();
+                  $(this).show();
+              }
+         });
     });
 
-    $('.contact ').click(function() {
-    var nome = $(this).find('.name').text();
-    $('.on-chat').find('.name').text(nome);
-    var imgProfile = $(this).find('.avatar img').attr('src');
-    $('.on-chat').find('.avatar img').attr('src', imgProfile);
-});
+    $('.contact').click(function() {
+        var nome = $(this).find('.name').text();
+        $('.on-chat').find('.name').text(nome);
+        var imgProfile = $(this).find('.avatar img').attr('src');
+        $('.on-chat').find('.avatar img').attr('src', imgProfile);
+    });
+
+    // Milestone III.B
+     $('.chat-container').on('click', '.click', function() {
+        $('.click').not(this).siblings('.dropdown').removeClass('dropdown-active');   // Chiudo tutte le finestre .message-options-panel aperte
+        $(this).siblings('.dropdown').toggleClass('dropdown-active');                           // Apro la finestra .message-options-panel sulla quale ho cliccato
+     });
+
+     $(document).on('click', '.destroy', function() {                                       // Osserviamo il document e confrontiamo il click con '.message-destroy'
+        $(this).closest('.message').remove();                                                       // Eliminiamo l'antenato .message
+     });
+
 });
