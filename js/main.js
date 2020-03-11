@@ -100,14 +100,14 @@ $(document).ready(function(){
         $('.on-chat').find('.avatar img').attr('src', imgProfile);
     });
 
-    // Milestone III.B
+
      $('.chat-container').on('click', '.click', function() {
-        $('.click').not(this).siblings('.dropdown').removeClass('dropdown-active');   // Chiudo tutte le finestre .message-options-panel aperte
-        $(this).siblings('.dropdown').toggleClass('dropdown-active');                           // Apro la finestra .message-options-panel sulla quale ho cliccato
+        $('.click').not(this).siblings('.dropdown').removeClass('dropdown-active');
+        $(this).siblings('.dropdown').toggleClass('dropdown-active');
      });
 
-     $(document).on('click', '.destroy', function() {                                       // Osserviamo il document e confrontiamo il click con '.message-destroy'
-        $(this).closest('.message').remove();                                                       // Eliminiamo l'antenato .message
+     $(document).on('click', '.destroy', function() {
+        $(this).closest('.message').remove();
      });
 
 });
