@@ -297,9 +297,10 @@ main{
     top: 30px;
     text-align: center;
     z-index: 9999;
+    box-shadow: 0px 0px 40px -15px rgba(0,0,0,0.75);
 }
 
-.dropdown.right{
+.message-send .dropdown{
     position: absolute;
     right: 30px;
 }

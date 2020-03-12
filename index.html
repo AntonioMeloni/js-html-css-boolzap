@@ -7,6 +7,7 @@
         <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://kit.fontawesome.com/dfd682ad78.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js" charset="utf-8"></script>
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
@@ -184,32 +185,24 @@
                 </div>
             </div>
         </div>
-        <div class="template-send">
-            <div class="message clearfix">
-                <div class="message-send">
-                    <i class="fas fa-angle-down click"></i>
-                    <div class="dropdown right">
-                        <p class="destroy">Elimina messaggio</p>
-                        <p>Info messaggio</p>
-                    </div>
-                    <div class="send"></div>
-                    <div class="orario"></div>
+
+        <script id="messaggio-template" type="text/x-handlebars-template">
+
+			<div class="message ">
+                <div class="{{direzione}}">
+    				<span class="message-text">{{testoMessaggio}}</span>
+    				<i class="fa fa-chevron-down f-right message-options click"></i>
+    				<span class="orario">17:31</span>
+    				<div class="dropdown">
+    					<p>Info messaggio</p>
+    					<p class="destroy">Cancella messaggio</p>
+    				</div>
                 </div>
-            </div>
-        </div>
-        <div class="template-received">
-            <div class="message clearfix">
-                <div class="message-received">
-                    <div class="received"></div>
-                    <i class="fas fa-angle-down click"></i>
-                    <div class="dropdown">
-                        <p class="destroy">Elimina messaggio</p>
-                        <p>Info messaggio</p>
-                    </div>
-                    <div class="orario"></div>
-                </div>
-            </div>
-        </div>
+			</div>
+
+		</script>
+
+		<script src="main.js"></script>
         <script src="js/main.js" charset="utf-8"></script>
     </body>
 </html>

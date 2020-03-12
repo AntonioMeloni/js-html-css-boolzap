@@ -47,18 +47,45 @@ $(document).ready(function(){
         });
     });
 
-    function sendMessage() {
-        var testoMessaggio = $('#message-text').val();
-        if(testoMessaggio.trim().length > 0) {
-        $('#message-text').val('');
-        var messaggio = $('.template-send .message').clone();
-        messaggio.find('.send').text(testoMessaggio);
-        messaggio.find('.orario').text(mostraOra());
-        $('.chat-container.chat-active').append(messaggio);
-        autoRespond();
-        scroll();
-        }
+    var source = $('#messaggio-template').html();
+    var template = Handlebars.compile(source);
+
+
+    function creaMsg(testoMsg, sentReceived) {
+        var datiMessaggio = {
+            testoMessaggio: testoMsg,
+            direzione: sentReceived
+        };
+
+        var templateMessaggio = template(datiMessaggio);
+        $('.chat-container.chat-active').append(templateMessaggio);
     }
+
+    function sendMessage() {
+         var testoMessaggio = $('#message-text').val();
+         if(testoMessaggio.trim().length > 0) {
+              $('#message-text').val('');
+              creaMsg(testoMessaggio, 'message-send');
+              scroll();
+              setTimeout(function() {
+                   creaMsg('ok', 'message-received');
+                   scroll();
+              }, 1000);
+         }
+    }
+
+    // function sendMessage() {
+    //     var testoMessaggio = $('#message-text').val();
+    //     if(testoMessaggio.trim().length > 0) {
+    //     $('#message-text').val('');
+    //     var messaggio = $('.template-send .message').clone();
+    //     messaggio.find('.send').text(testoMessaggio);
+    //     messaggio.find('.orario').text(mostraOra());
+    //     $('.chat-container.chat-active').append(messaggio);
+    //     autoRespond();
+    //     scroll();
+    //     }
+    // }
 
     function autoRespond() {
         var autoreply = setInterval(function () {
