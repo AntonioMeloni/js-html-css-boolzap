@@ -51,29 +51,128 @@ $(document).ready(function(){
     var template = Handlebars.compile(source);
 
 
-    function creaMsg(testoMsg, sentReceived) {
+    function creaMsg(testoMsg, sentReceived , selettoreConversazione) {
         var datiMessaggio = {
             testoMessaggio: testoMsg,
             direzione: sentReceived
         };
 
         var templateMessaggio = template(datiMessaggio);
-        $('.chat-container.chat-active').append(templateMessaggio);
+        $(selettoreConversazione).append(templateMessaggio);
+    }
+
+    var messaggiArchiviati = {
+
+        c1: [
+            {                                 // Assemblo in un oggetto il contenuto del messaggio
+                testoMessaggio: 'Ciao Fabio come stai?',
+                direzione: 'message-send'
+            },
+            {                                 // Assemblo in un oggetto il contenuto del messaggio
+                testoMessaggio: 'Non c\'è male, ma Luca mi sta facendo impazzire',
+                direzione: 'message-received'
+            }
+        ],
+        c2: [
+            {                                 // Assemblo in un oggetto il contenuto del messaggio
+                testoMessaggio: 'Ciao Francesca come stai?',
+                direzione: 'message-send'
+            },
+            {                                 // Assemblo in un oggetto il contenuto del messaggio
+                testoMessaggio: 'Non c\'è male, ma Luca mi sta facendo impazzire',
+                direzione: 'message-received'
+            }
+        ],
+        c3: [
+            {                                 // Assemblo in un oggetto il contenuto del messaggio
+                testoMessaggio: 'Ciao Carlo come stai?',
+                direzione: 'message-send'
+            },
+            {                                 // Assemblo in un oggetto il contenuto del messaggio
+                testoMessaggio: 'Non c\'è male, ma Luca mi sta facendo impazzire',
+                direzione: 'message-received'
+            }
+        ],
+        c4: [
+            {                                 // Assemblo in un oggetto il contenuto del messaggio
+                testoMessaggio: 'Ciao Mario come stai?',
+                direzione: 'message-send'
+            },
+            {                                 // Assemblo in un oggetto il contenuto del messaggio
+                testoMessaggio: 'Non c\'è male, ma Luca mi sta facendo impazzire',
+                direzione: 'message-received'
+            }
+        ],
+        c5: [
+            {                                 // Assemblo in un oggetto il contenuto del messaggio
+                testoMessaggio: 'Ciao Paolo come stai?',
+                direzione: 'message-send'
+            },
+            {                                 // Assemblo in un oggetto il contenuto del messaggio
+                testoMessaggio: 'Non c\'è male, ma Luca mi sta facendo impazzire',
+                direzione: 'message-received'
+            }
+        ],
+        c6: [
+            {                                 // Assemblo in un oggetto il contenuto del messaggio
+                testoMessaggio: 'Ciao Simone come stai?',
+                direzione: 'message-send'
+            },
+            {                                 // Assemblo in un oggetto il contenuto del messaggio
+                testoMessaggio: 'Non c\'è male, ma Luca mi sta facendo impazzire',
+                direzione: 'message-received'
+            }
+        ],
+        c7: [
+            {                                 // Assemblo in un oggetto il contenuto del messaggio
+                testoMessaggio: 'Ciao Marco come stai?',
+                direzione: 'message-send'
+            },
+            {                                 // Assemblo in un oggetto il contenuto del messaggio
+                testoMessaggio: 'Non c\'è male, ma Luca mi sta facendo impazzire',
+                direzione: 'message-received'
+            }
+        ],
+        c8: [
+            {                                 // Assemblo in un oggetto il contenuto del messaggio
+                testoMessaggio: 'Ciao Maria come stai?',
+                direzione: 'message-send'
+            },
+            {
+                testoMessaggio: 'Non c\'è male, ma Luca mi sta facendo impazzire',
+                direzione: 'message-received'
+            }
+        ],
+    };
+
+
+
+    for (var convKey in messaggiArchiviati) {
+
+        var numeroConversazione = convKey[1];
+
+        for (var i = 0; i < convKey.length; i++) {
+            var oggettoMessaggio = messaggiArchiviati[convKey][i];
+            var testoMessaggio = oggettoMessaggio.testoMessaggio;
+            var direzione = oggettoMessaggio.direzione;
+
+            var selettoreConversazione = $('.chat-container[data-utente="' + numeroConversazione + '"]');
+            creaMsg(testoMessaggio, direzione, selettoreConversazione);
+        }
     }
 
     function sendMessage() {
          var testoMessaggio = $('#message-text').val();
          if(testoMessaggio.trim().length > 0) {
               $('#message-text').val('');
-              creaMsg(testoMessaggio, 'message-send');
+              creaMsg(testoMessaggio, 'message-send' , '.chat-container.chat-active');
               scroll();
               setTimeout(function() {
-                   creaMsg('ok', 'message-received');
+                   creaMsg('ok', 'message-received' , '.chat-container.chat-active');
                    scroll();
               }, 1000);
          }
     }
-
     // function sendMessage() {
     //     var testoMessaggio = $('#message-text').val();
     //     if(testoMessaggio.trim().length > 0) {
@@ -87,17 +186,17 @@ $(document).ready(function(){
     //     }
     // }
 
-    function autoRespond() {
-        var autoreply = setInterval(function () {
-            var testoMessaggio = 'Ok';
-            var messaggio = $('.template-received .message').clone();
-            messaggio.find('.received').text(testoMessaggio);
-            messaggio.find('.orario').text(mostraOra());
-            $('.chat-container.chat-active').append(messaggio);
-            clearInterval(autoreply);
-            scroll();
-        },1500);
-    }
+    // function autoRespond() {
+    //     var autoreply = setInterval(function () {
+    //         var testoMessaggio = 'Ok';
+    //         var messaggio = $('.template-received .message').clone();
+    //         messaggio.find('.received').text(testoMessaggio);
+    //         messaggio.find('.orario').text(mostraOra());
+    //         $('.chat-container.chat-active').append(messaggio);
+    //         clearInterval(autoreply);
+    //         scroll();
+    //     },1500);
+    // }
 
     function scroll() {
           var pixelScroll = $('.chat-container .chat-active').height();

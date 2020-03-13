@@ -320,3 +320,7 @@ main{
 .dropdown p:hover{
     color: black;
 }
+
+.chat-container{
+    display: none;
+}
