@@ -40,7 +40,7 @@
                     <input id="cerca-contatti" placeholder="Cerca o inizia una nuova chat" />
                 </div>
                 <div class="contacts">
-                    <div class="contact" data-utente="1">
+                    <!-- <div class="contact" data-utente="1">
                         <div class="avatar">
                             <img src='https://avataaars.io/?avatarStyle=Circle&topType=ShortHairFrizzle&accessoriesType=Round&hairColor=Brown&facialHairType=Blank&clotheType=Hoodie&clotheColor=Red&eyeType=EyeRoll&eyebrowType=Angry&mouthType=Grimace&skinColor=Tanned'/>
                         </div>
@@ -117,8 +117,15 @@
                             <span class="name"><strong>Maria</strong></span>
                             <p class="last-message">Non poteva essere altrimenti</p>
                         </div>
-                    </div>
-                    
+                    </div> -->
+                    <div class="contact" data-utente="1"></div>
+                    <div class="contact" data-utente="2"></div>
+                    <div class="contact" data-utente="3"></div>
+                    <div class="contact" data-utente="4"></div>
+                    <div class="contact" data-utente="5"></div>
+                    <div class="contact" data-utente="6"></div>
+                    <div class="contact" data-utente="7"></div>
+                    <div class="contact" data-utente="8"></div>
                 </div>
             </aside>
             <div class="right-side">
@@ -173,13 +180,25 @@
                 <div class="{{direzione}}">
     				<span class="message-text">{{testoMessaggio}}</span>
     				<i class="fa fa-chevron-down f-right message-options click"></i>
-    				<span class="orario">17:31</span>
+    				<span class="orario">{{orario}}</span>
     				<div class="dropdown">
     					<p>Info messaggio</p>
     					<p class="destroy">Cancella messaggio</p>
     				</div>
                 </div>
 			</div>
+
+		</script>
+
+        <script id="contatto-template" type="text/x-handlebars-template">
+
+                <div class="avatar">
+                    <img  class="profileAvatar"src='{{imgProfile}}'/>
+                </div>
+                <div class="contact-info">
+                    <span class="name"><strong>{{name}}</strong></span>
+                    <p class="last-message">{{lastMessage}}</p>
+                </div>
 
 		</script>
 

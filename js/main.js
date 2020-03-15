@@ -47,14 +47,97 @@ $(document).ready(function(){
         });
     });
 
+
+    var source = $('#contatto-template').html();
+    var template = Handlebars.compile(source);
+
+    function creaContatto(nome, avatar , ultimoMessaggio , selettoreContatto) {
+        var datiContatto = {
+            name: nome,
+            imgProfile: avatar,
+            lastMessage:ultimoMessaggio
+        };
+
+        var templateContatto = template(datiContatto);
+        $(selettoreContatto).append(templateContatto);
+    }
+
+    var rubrica = {
+        r1: {
+            name: 'Fabio',
+            imgProfile: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairFrizzle&accessoriesType=Round&hairColor=Brown&facialHairType=Blank&clotheType=Hoodie&clotheColor=Red&eyeType=EyeRoll&eyebrowType=Angry&mouthType=Grimace&skinColor=Tanned',
+            lastMessage: 'Non poteva andare altrimenti'
+        },
+
+        r2: {
+            name: 'Francesca',
+            imgProfile: 'https://www.w3schools.com/howto/img_avatar2.png',
+            lastMessage: 'Non poteva andare altrimenti'
+        },
+
+        r3: {
+            name: 'Carlo',
+            imgProfile: 'https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Kurt&hairColor=BrownDark&facialHairType=MoustacheMagnum&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=Black&eyeType=Wink&eyebrowType=UnibrowNatural&mouthType=Sad&skinColor=Light',
+            lastMessage: 'Non poteva andare altrimenti'
+        },
+
+        r4: {
+            name: 'Mario',
+            imgProfile: 'https://avataaars.io/?avatarStyle=Circle&topType=LongHairFrida&accessoriesType=Sunglasses&hairColor=Platinum&facialHairType=BeardMagestic&facialHairColor=BrownDark&clotheType=ShirtVNeck&clotheColor=PastelBlue&eyeType=Close&eyebrowType=RaisedExcited&mouthType=Vomit&skinColor=Black',
+            lastMessage: 'Non poteva andare altrimenti'
+        },
+
+        r5: {
+            name: 'Paolo',
+            imgProfile: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairSides&accessoriesType=Round&hairColor=Brown&facialHairType=MoustacheMagnum&facialHairColor=Blonde&clotheType=BlazerSweater&clotheColor=PastelYellow&eyeType=Side&eyebrowType=UpDownNatural&mouthType=Eating&skinColor=Pale',
+            lastMessage: 'Non poteva andare altrimenti'
+        },
+
+        r6: {
+            name: 'Simone',
+            imgProfile: 'https://avataaars.io/?avatarStyle=Circle&topType=Hat&accessoriesType=Kurt&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BlondeGolden&clotheType=ShirtScoopNeck&clotheColor=PastelOrange&eyeType=Hearts&eyebrowType=UpDownNatural&mouthType=Sad&skinColor=Light',
+            lastMessage: 'Non poteva andare altrimenti'
+        },
+
+        r7: {
+            name: 'Marco',
+            imgProfile: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairTheCaesar&accessoriesType=Round&hairColor=SilverGray&facialHairType=BeardMedium&facialHairColor=BrownDark&clotheType=BlazerShirt&clotheColor=PastelBlue&eyeType=Side&eyebrowType=UpDownNatural&mouthType=Tongue&skinColor=Tanned',
+            lastMessage: 'Non poteva andare altrimenti'
+        },
+
+        r8: {
+            name: 'Maria',
+            imgProfile: 'https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraightStrand&accessoriesType=Prescription02&hairColor=PastelPink&facialHairType=Blank&facialHairColor=Black&clotheType=CollarSweater&clotheColor=PastelOrange&eyeType=Surprised&eyebrowType=RaisedExcited&mouthType=Vomit&skinColor=Yellow',
+            lastMessage: 'Non poteva andare altrimenti'
+        },
+
+    };
+
+    for (var key in rubrica) {
+
+        var numeroContatto = key[1];
+
+            var oggettoContatto = rubrica[key];
+            var name = oggettoContatto.name;
+            var imgProfile = oggettoContatto.imgProfile;
+            var ultimoMessaggio = oggettoContatto.lastMessage;
+
+            var selettoreContatto = $('.contact[data-utente="' + numeroContatto + '"]');
+            creaContatto(name, imgProfile, ultimoMessaggio , selettoreContatto);
+
+    }
+
+//Sezione chat con Handlebars
+
     var source = $('#messaggio-template').html();
     var template = Handlebars.compile(source);
 
 
-    function creaMsg(testoMsg, sentReceived , selettoreConversazione) {
+    function creaMsg(testoMsg, sentReceived , ora , selettoreConversazione) {
         var datiMessaggio = {
             testoMessaggio: testoMsg,
-            direzione: sentReceived
+            direzione: sentReceived,
+            orario:ora
         };
 
         var templateMessaggio = template(datiMessaggio);
@@ -66,81 +149,97 @@ $(document).ready(function(){
         c1: [
             {                                 // Assemblo in un oggetto il contenuto del messaggio
                 testoMessaggio: 'Ciao Fabio come stai?',
-                direzione: 'message-send'
+                direzione: 'message-send',
+                orario: mostraOra()
             },
             {                                 // Assemblo in un oggetto il contenuto del messaggio
                 testoMessaggio: 'Non c\'è male, ma Luca mi sta facendo impazzire',
-                direzione: 'message-received'
+                direzione: 'message-received',
+                orario: mostraOra()
             }
         ],
         c2: [
             {                                 // Assemblo in un oggetto il contenuto del messaggio
                 testoMessaggio: 'Ciao Francesca come stai?',
-                direzione: 'message-send'
+                direzione: 'message-send',
+                orario: mostraOra()
             },
             {                                 // Assemblo in un oggetto il contenuto del messaggio
                 testoMessaggio: 'Non c\'è male, ma Luca mi sta facendo impazzire',
-                direzione: 'message-received'
+                direzione: 'message-received',
+                orario: mostraOra()
             }
         ],
         c3: [
             {                                 // Assemblo in un oggetto il contenuto del messaggio
                 testoMessaggio: 'Ciao Carlo come stai?',
-                direzione: 'message-send'
+                direzione: 'message-send',
+                orario: mostraOra()
             },
             {                                 // Assemblo in un oggetto il contenuto del messaggio
                 testoMessaggio: 'Non c\'è male, ma Luca mi sta facendo impazzire',
-                direzione: 'message-received'
+                direzione: 'message-received',
+                orario: mostraOra()
             }
         ],
         c4: [
             {                                 // Assemblo in un oggetto il contenuto del messaggio
                 testoMessaggio: 'Ciao Mario come stai?',
-                direzione: 'message-send'
+                direzione: 'message-send',
+                orario: mostraOra()
             },
             {                                 // Assemblo in un oggetto il contenuto del messaggio
                 testoMessaggio: 'Non c\'è male, ma Luca mi sta facendo impazzire',
-                direzione: 'message-received'
+                direzione: 'message-received',
+                orario: mostraOra()
             }
         ],
         c5: [
             {                                 // Assemblo in un oggetto il contenuto del messaggio
                 testoMessaggio: 'Ciao Paolo come stai?',
-                direzione: 'message-send'
+                direzione: 'message-send',
+                orario: mostraOra()
             },
             {                                 // Assemblo in un oggetto il contenuto del messaggio
                 testoMessaggio: 'Non c\'è male, ma Luca mi sta facendo impazzire',
-                direzione: 'message-received'
+                direzione: 'message-received',
+                orario: mostraOra()
             }
         ],
         c6: [
             {                                 // Assemblo in un oggetto il contenuto del messaggio
                 testoMessaggio: 'Ciao Simone come stai?',
-                direzione: 'message-send'
+                direzione: 'message-send',
+                orario: mostraOra()
             },
             {                                 // Assemblo in un oggetto il contenuto del messaggio
                 testoMessaggio: 'Non c\'è male, ma Luca mi sta facendo impazzire',
-                direzione: 'message-received'
+                direzione: 'message-received',
+                orario: mostraOra()
             }
         ],
         c7: [
             {                                 // Assemblo in un oggetto il contenuto del messaggio
                 testoMessaggio: 'Ciao Marco come stai?',
-                direzione: 'message-send'
+                direzione: 'message-send',
+                orario: mostraOra()
             },
             {                                 // Assemblo in un oggetto il contenuto del messaggio
                 testoMessaggio: 'Non c\'è male, ma Luca mi sta facendo impazzire',
-                direzione: 'message-received'
+                direzione: 'message-received',
+                orario: mostraOra()
             }
         ],
         c8: [
             {                                 // Assemblo in un oggetto il contenuto del messaggio
                 testoMessaggio: 'Ciao Maria come stai?',
-                direzione: 'message-send'
+                direzione: 'message-send',
+                orario: mostraOra()
             },
             {
                 testoMessaggio: 'Non c\'è male, ma Luca mi sta facendo impazzire',
-                direzione: 'message-received'
+                direzione: 'message-received',
+                orario: mostraOra()
             }
         ],
     };
@@ -155,20 +254,22 @@ $(document).ready(function(){
             var oggettoMessaggio = messaggiArchiviati[convKey][i];
             var testoMessaggio = oggettoMessaggio.testoMessaggio;
             var direzione = oggettoMessaggio.direzione;
+            var timeMessage = oggettoMessaggio.orario;
 
             var selettoreConversazione = $('.chat-container[data-utente="' + numeroConversazione + '"]');
-            creaMsg(testoMessaggio, direzione, selettoreConversazione);
+            creaMsg(testoMessaggio, direzione, timeMessage , selettoreConversazione);
         }
     }
 
     function sendMessage() {
          var testoMessaggio = $('#message-text').val();
+         var orarioMessaggio = mostraOra();
          if(testoMessaggio.trim().length > 0) {
               $('#message-text').val('');
-              creaMsg(testoMessaggio, 'message-send' , '.chat-container.chat-active');
+              creaMsg(testoMessaggio, 'message-send' , orarioMessaggio , '.chat-container.chat-active');
               scroll();
               setTimeout(function() {
-                   creaMsg('ok', 'message-received' , '.chat-container.chat-active');
+                   creaMsg('ok', 'message-received' , orarioMessaggio , '.chat-container.chat-active');
                    scroll();
               }, 1000);
          }
